@@ -376,3 +376,16 @@ a.highlight:hover strong { color: var(--green); }
 @media (max-width: 760px) { .anatomy span { font-size: 10px; letter-spacing: .4px; } }
 @media (max-width: 1020px) { .figure-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); } }
 @media (max-width: 760px) { .figure-row { grid-template-columns: minmax(0, 1fr); } }
+
+/* v4: smaller histology panel, caption-only whole-brain panel */
+.figure-row { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 32px; }
+.figure-row figcaption { max-width: 560px; }
+@media (max-width: 1020px) { .figure-row { grid-template-columns: minmax(0, 220px) minmax(0, 1fr); } }
+@media (max-width: 760px) { .figure-row { grid-template-columns: minmax(0, 1fr); } .figure-row figure:first-child { max-width: 260px; } }
+
+/* v5: square histology sized to match the whole-brain panel height
+   (panel height ≈ 26.4% of row width given two 808×579 images, 10px padding, 8px gap, 32px column gap) */
+.figure-row { grid-template-columns: calc(26.4% - 1px) minmax(0, 1fr); gap: 32px; }
+.figure-row figure:first-child img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+@media (max-width: 1020px) { .figure-row { grid-template-columns: calc(26.4% - 1px) minmax(0, 1fr); } }
+@media (max-width: 760px) { .figure-row { grid-template-columns: minmax(0, 1fr); } .figure-row figure:first-child { max-width: 240px; } }
